@@ -102,7 +102,7 @@ void ia()
     }
     movimiento=0;
 }
-void Atacar()
+int Atacar()
 {
     int x;
     {
