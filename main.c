@@ -94,7 +94,7 @@ void ia()
     Atacar();                         //si puede ganr lo va a hacer
     if(movimiento==0)
     {
-        //Defender();                   //si no puede ganar intenta defenderse de otra jugada
+        Defender();                   //si no puede ganar intenta defenderse de otra jugada
     }
     if(movimiento==0)
     {
@@ -216,6 +216,130 @@ int Atacar()
                 }
             }
             if(strcmp(tab[0][0],"O")==0 && strcmp(tab[2][2],"O")==0)
+            {
+                if(strcmp(tab[1][1]," ")==0)
+                {
+                    strcpy(tab[1][1],"O");
+                    movimiento=1;
+                    return 0;
+                }
+            }
+
+}
+int Defender()
+{
+    int x;
+    {
+            for(x=0;x<3;x++)
+            {
+                if(strcmp(tab[x][0],"X")==0 && strcmp(tab[x][1],"X")==0)
+                {
+                    if(strcmp(tab[x][2]," ")==0)
+                    {
+                        strcpy(tab[x][2],"O");
+                        movimiento=1;
+                        return 0;
+                    }
+                }
+            }
+
+
+
+            for(x=0;x<3;x++)
+            {
+                if(strcmp(tab[x][0],"X")==0 && strcmp(tab[x][2],"X")==0)
+                {
+                    if(strcmp(tab[x][1]," ")==0)
+                    {
+                        strcpy(tab[x][1],"O");
+                        movimiento=1;
+                        return 0;
+                    }
+                }
+            }
+
+
+           for(x=0;x<3;x++)
+            {
+                if(strcmp(tab[x][1],"X")==0 && strcmp(tab[x][2],"X")==0)
+                {
+                    if(strcmp(tab[x][0]," ")==0)
+                    {
+                        strcpy(tab[x][0],"O");
+                        movimiento=1;
+                        return 0;
+                    }
+                }
+            }
+
+
+    }
+    {
+
+            for(x=0;x<3;x++)
+            {
+                if(strcmp(tab[0][x],"X")==0 && strcmp(tab[1][x],"X")==0)
+                {
+                    if(strcmp(tab[2][x]," ")==0)
+                    {
+                        strcpy(tab[2][x],"O");
+                        movimiento=1;
+                        return 0;
+                    }
+                }
+            }
+
+
+           for(x=0;x<3;x++)
+            {
+                if(strcmp(tab[1][x],"X")==0 && strcmp(tab[2][x],"X")==0)
+                {
+                    if(strcmp(tab[0][x]," ")==0)
+                    {
+                        strcpy(tab[0][x],"O");
+                        movimiento=1;
+                        return 0;
+                    }
+                }
+            }
+
+
+          for(x=0;x<3;x++)
+            {
+                if(strcmp(tab[0][x],"X")==0 && strcmp(tab[2][x],"X")==0)
+                {
+                    if(strcmp(tab[1][x]," ")==0)
+                    {
+                        strcpy(tab[1][x],"O");
+                        movimiento=1;
+                        return 0;
+                    }
+                }
+            }
+
+
+    }
+    ////diagonal
+     if(strcmp(tab[0][0],"X")==0 && strcmp(tab[1][1],"X")==0)
+            {
+                if(strcmp(tab[2][2]," ")==0)
+                {
+                    strcpy(tab[2][2],"O");
+                    movimiento=1;
+                    return 0;
+                }
+            }
+
+            if(strcmp(tab[1][1],"X")==0 && strcmp(tab[2][2],"X")==0)
+            {
+                if(strcmp(tab[0][0]," ")==0)
+                {
+                    strcpy(tab[0][0],"O");
+                    movimiento=1;
+                    return 0;
+                }
+            }
+            if(strcmp(tab[0][0],"X")==0 && strcmp(tab[2][2],"X")==0)
             {
                 if(strcmp(tab[1][1]," ")==0)
                 {
