@@ -8,16 +8,16 @@ int main()
 {   int x,elc_usu,Cord_X,Cord_Y;
     gotoxy(1,40);
     //textcolor(RED);
-    llenado();
-    printf("TA TE TI");
+    llenado();//invoca a la funcion para llenar el tablero de " "
+    printf("TA TE TI           Jockel");
     gotoxy(3,3);
     printf("Ingrese 5 numeros (segun las cooderdenadas, primero las x y luego los 0 )  para que el bot determine un Jugada:\n");
     for (x=0;x<3;x++) //toma los numeros ingresados por el usuario y los tranforma en coordenadas x e y para colocar las x en la matriz.
     {
           do {
-                printf("numX%d:\t",x+1);
+                printf("numX%d:\t",x+1);//notifica al usuario el numero de la ficha que va a colocar
                 scanf("%d",&elc_usu);
-            }while (elc_usu<0 || elc_usu>9);
+            }while (elc_usu<0 || elc_usu>9); //evita que el numero de casilla no sobrepase los limites
 
             if(elc_usu>=1 && elc_usu<=3)
             {
@@ -31,7 +31,7 @@ int main()
             {
                 Cord_X=elc_usu-7;Cord_Y=2;
             }
-       strcpy(tab[Cord_Y][Cord_X],"X");
+       strcpy(tab[Cord_Y][Cord_X],"X");//coloca la ficha(caracter)basado en la posicion de tablero
 
     }
     for (x=0;x<2;x++) //toma los numeros ingresados por el usuario y los tranforma en coordenadas x e y para colocar las 0 en la matriz.
@@ -56,8 +56,8 @@ int main()
        strcpy(tab[Cord_Y][Cord_X],"O");
 
     }
-    ia();
-    tablero();
+    ia();////invoca la funcion de la "ia"
+    tablero();// invoca la funcion par mostrar tablero
 
 
 
@@ -67,16 +67,16 @@ int main()
 
 void tablero()// dibuja el tablero con las respectivas  posiciones
 {
-    system("cls");
+    system("cls");///limpia la pantalla
     gotoxy(1,2);
-
+    ///////dibuajdo de tablero con los caracteres ASCII y libreria Conio2.h
     printf("  %s   %c   %s   %c   %s \n",tab[0][0],179,tab[0][1],179,tab[0][2]);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",196,196,196,196,196,196,197,196,196,196,196,196,196,196,197,196,196,196,196,196,196);
     printf("  %s   %c   %s   %c   %s \n",tab[1][0],179,tab[1][1],179,tab[1][2]);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",196,196,196,196,196,196,197,196,196,196,196,196,196,196,197,196,196,196,196,196,196);
     printf("  %s   %c   %s   %c   %s \n",tab[2][0],179,tab[2][1],179,tab[2][2]);
 }
-void llenado()// dibuja el tablero con las respectivas  posiciones
+void llenado()// llena el tablero de espacios vacios(" ")
 {
     int x,y;
     printf("\n");
@@ -91,7 +91,7 @@ void llenado()// dibuja el tablero con las respectivas  posiciones
 }
 void ia()
 {
-    Atacar();                         //si puede ganr lo va a hacer
+    Atacar();                         //si puede ganar lo va a hacer
     if(movimiento==0)
     {
         Defender();                   //si no puede ganar intenta defenderse de otra jugada
