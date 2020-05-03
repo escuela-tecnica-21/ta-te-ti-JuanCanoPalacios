@@ -8,7 +8,7 @@ int main()
 {   int x,elc_usu,Cord_X,Cord_Y;
     gotoxy(1,40);
     //textcolor(RED);
-    llenado();//invoca a la funcion para llenar el tablero de " "
+    Inicializar_tablero();//invoca a la funcion para llenar el tablero de " "
     printf("TA TE TI           Jockel");
     gotoxy(3,3);
     printf("Ingrese 5 numeros (segun las cooderdenadas, primero las x y luego los 0 )  para que el bot determine un Jugada:\n");
@@ -56,8 +56,8 @@ int main()
        strcpy(tab[Cord_Y][Cord_X],"O");
 
     }
-    ia();////invoca la funcion de la "ia"
-    tablero();// invoca la funcion par mostrar tablero
+    Movimiento_ia();////invoca la funcion de la "ia"
+    Dibujar_tablero();// invoca la funcion par mostrar tablero
 
 
 
@@ -65,7 +65,7 @@ int main()
 }
 
 
-void tablero()// dibuja el tablero con las respectivas  posiciones
+void Dibujar_tablero()// dibuja el tablero con las respectivas  posiciones
 {
     system("cls");///limpia la pantalla
     gotoxy(1,2);
@@ -76,7 +76,7 @@ void tablero()// dibuja el tablero con las respectivas  posiciones
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",196,196,196,196,196,196,197,196,196,196,196,196,196,196,197,196,196,196,196,196,196);
     printf("  %s   %c   %s   %c   %s \n",tab[2][0],179,tab[2][1],179,tab[2][2]);
 }
-void llenado()// llena el tablero de espacios vacios(" ")
+void Inicializar_tablero()// llena el tablero de espacios vacios(" ")
 {
     int x,y;
     printf("\n");
@@ -89,7 +89,7 @@ void llenado()// llena el tablero de espacios vacios(" ")
 
     }
 }
-void ia()
+void Movimiento_ia()
 {
     Atacar();                         //si puede ganar lo va a hacer
     if(movimiento==0)
