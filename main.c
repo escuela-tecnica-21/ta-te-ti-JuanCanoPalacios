@@ -89,6 +89,18 @@ void Inicializar_tablero()// llena el tablero de espacios vacios(" ")
 
     }
 }
+int validar_espacio(int randx,int randy) /// valida que el espacio no este ocupado por alguna otra ficha
+{
+    if (strcmp((tab[randx][randy])," ")==0)
+    {
+        return 0;
+    }
+    else if (strcmp((tab[randx][randy]),"O")==0 || strcmp((tab[randx][randy]),"X")==0)
+    {
+        return 1;
+    }
+
+}
 void Movimiento_ia()
 {
     Atacar();                         //si puede ganar lo va a hacer
@@ -101,6 +113,19 @@ void Movimiento_ia()
           //movimiento_ia_ran();       //si no puede ganar o denegar coloca una ficha random
     }
     movimiento=0;
+}
+int movimiento_rand_ia() ///coloca una ficha en un espacio aleatorio si las posibilidades de ganar son nulas
+{ int ia_rand_x, ia_rand_y;
+   do{
+   ia_rand_x=rand()%(3-1+0)+1;///posicion random en x para armar las coordenadas de la ficha
+   ia_rand_y=rand()%(3-1+0)+1;///posicion random en y para armar las coordenadas de la ficha
+   }while(validar_espacio(ia_rand_x,ia_rand_y)); /// repite la creacion de coodernadas hasta que la posicion este libre
+   Dibujar_ficha(ia_rand_x,ia_rand_y);
+
+}
+void Dibujar_ficha(int randx,int randy) ///dibuja una ficha O en la variable que se le entrega
+{
+    strcpy (tab[randx][randy],"O");
 }
 int Atacar()
 {
