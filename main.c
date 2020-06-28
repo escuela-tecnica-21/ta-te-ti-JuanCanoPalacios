@@ -56,8 +56,8 @@ int main()
        strcpy(tab[Cord_Y][Cord_X],"O");
 
     }
-    Movimiento_ia();////invoca la funcion de la "ia"
-    Dibujar_tablero();// invoca la funcion par mostrar tablero
+    Movimiento_ia();////invoca la funcion de la "ia" para que ejecute su movimiento
+    Dibujar_tablero();// invoca la funcion para mostrar tablero
 
 
 
@@ -120,14 +120,14 @@ int movimiento_rand_ia() ///coloca una ficha en un espacio aleatorio si las posi
    ia_rand_x=rand()%(3-1+0)+1;///posicion random en x para armar las coordenadas de la ficha
    ia_rand_y=rand()%(3-1+0)+1;///posicion random en y para armar las coordenadas de la ficha
    }while(validar_espacio(ia_rand_x,ia_rand_y)); /// repite la creacion de coodernadas hasta que la posicion este libre
-   Dibujar_ficha(ia_rand_x,ia_rand_y);
+   Dibujar_ficha(ia_rand_x,ia_rand_y);/// dibuja la ficha en las coordenadas dadas
 
 }
 void Dibujar_ficha(int randx,int randy) ///dibuja una ficha O en la variable que se le entrega
 {
     strcpy (tab[randx][randy],"O");
 }
-int Atacar()
+int Atacar() // busca la 3ra psocicion restante en un conjunto de posibles jugadas pre establecidas(esto es poco esficiente)
 {
     int x;
     {
