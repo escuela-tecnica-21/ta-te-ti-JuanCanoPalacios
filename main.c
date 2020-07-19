@@ -54,13 +54,13 @@ void Dibujar_tablero()// dibuja el tablero con las respectivas  posiciones
     system("cls");///limpia la pantalla
     gotoxy(1,2);
     ///////dibujado de tablero con los caracteres ASCII y libreria Conio2.h
-        printf("  %s   %c   %s   %c   %s \n",tab[0],179,tab[1],179,tab[2]);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",196,196,196,196,196,196,197,196,196,196,196,196,196,196,197,196,196,196,196,196,196);
-
-    printf("  %s   %c   %s   %c   %s \n",tab[3],179,tab[4],179,tab[5]);
-
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",196,196,196,196,196,196,197,196,196,196,196,196,196,196,197,196,196,196,196,196,196);
-    printf("  %s   %c   %s   %c   %s \n",tab[6],179,tab[7],179,tab[8]);
+  printf("\n");
+  printf("\t  %c  |  %c  |  %c\n" tab[0], tab[1], tab[2]);
+  printf("\t---|---|---\n");
+  printf("\t  %c  |  %c  |  %c\n" tab[3], tab[4], tab[5]);
+  printf("\t---|---|---\n");
+  printf("\t  %c  |  %c  |  %c\n" tab[6], tab[7], tab[8]);
+  printf("\t---|---|---\n");
 }
 void Inicializar_tablero()// llena el tablero de espacios vacios(" ")
 {
@@ -88,7 +88,7 @@ void Movimiento_ia()
     Turno_Maquina(char tab[])             //si puede ganar lo va a hacer
     if(movimiento==0)
     {
-        Defender();                   //si no puede ganar intenta defenderse de otra jugada
+        Defensa_Maquina();                   //si no puede ganar intenta defenderse de otra jugada
     }
     if(movimiento==0)
     {
@@ -125,7 +125,15 @@ int Ganar_Maquina(char tab[], char simbolo, int a, int b, int c){
     else
         return 0;
 }
+int Defensa_Maquina (char tab[]){
+for(int x=0;x<9;x++){
+        if(Ganar_Maquina(Tablero, 'X', Hileras[X][0], Hileras[X][1], Hileras[X][2])==1){
+            printf("Turno Maquina");
+            return Espacio_vacio(tab, Hileras[X][0], Hileras[X][1], Hileras[X][1]);
+        }
+    }
 
+}
 int Espacio_vacio(char tab[], int a, int b, int c){
     if(tab[a]==' ')
         return a;
