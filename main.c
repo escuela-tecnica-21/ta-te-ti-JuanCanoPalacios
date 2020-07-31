@@ -40,14 +40,36 @@ int main()
        strcpy(tab[elc_usu],"O");
 
     }
+while (Final_partida(tab)==0){
     Movimiento_ia();////invoca la funcion de la "ia"
     Dibujar_tablero();// invoca la funcion par mostrar tablero
-
+}
 
 
     return 0;
 }
+int Final_partida(char tab[])
+{
+return (Ganador(tab) || Empate(tab));
+}
 
+int Ganador(char tab[])
+{
+   for (int i= 0; i<8; i++){
+          if (Suma(tab, 'O', Hilera[i][0], Hilera[i][1], Hilera[i][2])== 3)
+                 return 0;
+          if (Suma(tab,'X', Hilera[i][0], Hilera[i][1], Hilera[i][2])== 3)
+                 return 0;
+                              }
+return 1;
+}
+int Empate(char tab[])
+{
+   for (int i=0; i<9; i++)
+      if (Espacio_vacio(tab, i))
+          return 1;
+return 0; 
+}
 
 void Dibujar_tablero()// dibuja el tablero con las respectivas  posiciones
 {
@@ -71,30 +93,24 @@ void Inicializar_tablero()// llena el tablero de espacios vacios(" ")
             strcpy(tab[x]," ");
     }
 }
-int validar_espacio(int randx) /// valida que el espacio no este ocupado por alguna otra ficha
+int validar_espacio(int x) /// valida que el espacio no este ocupado por alguna otra ficha
 {
-    if (strcmp((tab[randx])," ")==0)
+    if (strcmp((tab[x])," ")==0)
     {
         return 0;
     }
-    else if (strcmp((tab[randx]),"O")==0 || strcmp((tab[randx]),"X")==0)
+    else if (strcmp((tab[x]),"O")==0 || strcmp((tab[x]),"X")==0)
     {
         return 1;
     }
 
 }
-void Movimiento_ia()
+void Movimiento_ia() 
 {
     Turno_Maquina(char tab[])             //si puede ganar lo va a hacer
-    if(movimiento==0)
-    {
-        Defensa_Maquina();                   //si no puede ganar intenta defenderse de otra jugada
-    }
-    if(movimiento==0)
-    {
-          movimiento_ia_ran();       //si no puede ganar o denegar coloca una ficha random
-    }
-    movimiento=0;
+    Defensa_Maquina();                   //si no puede ganar intenta defenderse de otra jugada
+     movimiento_ia_ran();       //si no puede ganar o denegar coloca una ficha random
+ 
 }
 int movimiento_rand_ia() ///coloca una ficha en un espacio aleatorio si las posibilidades de ganar son nulas
 { int ia_rand_x, ia_rand_y;
@@ -104,9 +120,9 @@ int movimiento_rand_ia() ///coloca una ficha en un espacio aleatorio si las posi
    Dibujar_ficha(ia_rand_x);
 
 }
-void Dibujar_ficha(int randx) ///dibuja una ficha O en la variable que se le entrega
+void Dibujar_ficha(int x) ///dibuja una ficha O en la variable que se le entrega
 {
-    strcpy (tab[randx],"O");
+    strcpy (tab[x],"O");
 }
 
 int Turno_Maquina(char tab[]){
@@ -134,6 +150,7 @@ for(int x=0;x<9;x++){
     }
 
 }
+
 int Espacio_vacio(char tab[], int a, int b, int c){
     if(tab[a]==' ')
         return a;
