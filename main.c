@@ -9,7 +9,7 @@ int Ganar_Maquina(char tab[], char simbolo, int a, int b, int c);
 int Vacio (char tab[], int a, int b, int c );
 
 
-int const Hilera[0][3] = { {0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8}, {0,4,8}, {2,4,6}};
+int const Hileras[0][3] = { {0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8}, {0,4,8}, {2,4,6}};
 int main()
 {   int x,elc_usu;
     gotoxy(1,40);
@@ -41,7 +41,7 @@ int main()
 
     }
 while (Final_partida(tab)==0){
-    Movimiento_ia();////invoca la funcion de la "ia"
+    Movimiento_ia(tab);////invoca la funcion de la "ia"
     Dibujar_tablero();// invoca la funcion par mostrar tablero
 }
 
@@ -56,9 +56,9 @@ return (Ganador(tab) || Empate(tab));
 int Ganador(char tab[])
 {
    for (int i= 0; i<8; i++){
-          if (Suma(tab, 'O', Hilera[i][0], Hilera[i][1], Hilera[i][2])== 3)
+          if (Suma(tab, 'O', Hileras[i][0], Hileras[i][1], Hileras[i][2])== 3)
                  return 0;
-          if (Suma(tab,'X', Hilera[i][0], Hilera[i][1], Hilera[i][2])== 3)
+          if (Suma(tab,'X', Hileras[i][0], Hileras[i][1], Hileras[i][2])== 3)
                  return 0;
                               }
 return 1;
@@ -68,7 +68,7 @@ int Empate(char tab[])
    for (int i=0; i<9; i++)
       if (Espacio_vacio(tab, i))
           return 1;
-return 0; 
+return 0;
 }
 
 void Dibujar_tablero()// dibuja el tablero con las respectivas  posiciones
@@ -77,11 +77,11 @@ void Dibujar_tablero()// dibuja el tablero con las respectivas  posiciones
     gotoxy(1,2);
     ///////dibujado de tablero con los caracteres ASCII y libreria Conio2.h
   printf("\n");
-  printf("\t  %c  |  %c  |  %c\n" tab[0], tab[1], tab[2]);
+  printf("\t  %c  |  %c  |  %c\n", tab[0], tab[1], tab[2]);
   printf("\t---|---|---\n");
-  printf("\t  %c  |  %c  |  %c\n" tab[3], tab[4], tab[5]);
+  printf("\t  %c  |  %c  |  %c\n", tab[3], tab[4], tab[5]);
   printf("\t---|---|---\n");
-  printf("\t  %c  |  %c  |  %c\n" tab[6], tab[7], tab[8]);
+  printf("\t  %c  |  %c  |  %c\n", tab[6], tab[7], tab[8]);
   printf("\t---|---|---\n");
 }
 void Inicializar_tablero()// llena el tablero de espacios vacios(" ")
@@ -105,12 +105,12 @@ int validar_espacio(int x) /// valida que el espacio no este ocupado por alguna 
     }
 
 }
-void Movimiento_ia() 
+void Movimiento_ia(char tab[])
 {
-    Turno_Maquina(char tab[])             //si puede ganar lo va a hacer
+    Turno_Maquina(tab);             //si puede ganar lo va a hacer
     Defensa_Maquina();                   //si no puede ganar intenta defenderse de otra jugada
      movimiento_ia_ran();       //si no puede ganar o denegar coloca una ficha random
- 
+
 }
 int movimiento_rand_ia() ///coloca una ficha en un espacio aleatorio si las posibilidades de ganar son nulas
 { int ia_rand_x, ia_rand_y;
@@ -141,7 +141,8 @@ int Ganar_Maquina(char tab[], char simbolo, int a, int b, int c){
     else
         return 0;
 }
-int Defensa_Maquina (char tab[]){
+
+int Defensa_Maquina (char Tablero[]){
 for(int x=0;x<9;x++){
         if(Ganar_Maquina(Tablero, 'X', Hileras[X][0], Hileras[X][1], Hileras[X][2])==1){
             printf("Turno Maquina");
