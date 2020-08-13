@@ -26,7 +26,7 @@ int main()
             }while (elc_usu<0 || elc_usu>9); //evita que el numero de casilla no sobrepase los limites
 
 
-       strcpy(tab[elc_usu],"X");//coloca la ficha(caracter)basado en la posicion de tablero
+       tab[elc_usu] = 'X';//coloca la ficha(caracter)basado en la posicion de tablero
 
     }
     for (x=0;x<2;x++) //toma los numeros ingresados por el usuario y los tranforma en coordenadas x e y para colocar las 0 en la matriz.
@@ -37,7 +37,7 @@ int main()
             }while (elc_usu<0 || elc_usu>9);
 
 
-       strcpy(tab[elc_usu],"O");
+      tab[elc_usu] = 'O';
 
     }
 while (Final_partida(tab)==0){
@@ -90,16 +90,16 @@ void Inicializar_tablero()// llena el tablero de espacios vacios(" ")
     printf("\n");
     for(x=0;x<9;x++)
     {
-            strcpy(tab[x]," ");
+           tab[x]=' ';
     }
 }
 int validar_espacio(int x) /// valida que el espacio no este ocupado por alguna otra ficha
 {
-    if (strcmp((tab[x])," ")==0)
+    if ((tab[x]=' ')==0)
     {
         return 0;
     }
-    else if (strcmp((tab[x]),"O")==0 || strcmp((tab[x]),"X")==0)
+    else if ((tab[x]='O')==0 ||(tab[x]='X')==0)
     {
         return 1;
     }
@@ -122,7 +122,7 @@ int movimiento_rand_ia() ///coloca una ficha en un espacio aleatorio si las posi
 }
 void Dibujar_ficha(int x) ///dibuja una ficha O en la variable que se le entrega
 {
-    strcpy (tab[x],"O");
+    tab[x]='O';
 }
 
 int Turno_Maquina(char tab[]){
