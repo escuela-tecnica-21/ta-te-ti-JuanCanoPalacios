@@ -129,7 +129,7 @@ int Turno_Maquina(char tab[]){
     for(int x=0;x<9;x++){
         if(Ganar_Maquina(Tablero, 'O', Hileras[X][0], Hileras[X][1], Hileras[X][2])==1){
             printf("Turno Maquina");
-            return Espacio_vacio(tab, Hileras[X][0], Hileras[X][1], Hileras[X][1]);
+            return Espacio_vacio(tab, Hileras[X][0], Hileras[X][1], Hileras[X][2]);
         }
     }
 }
@@ -146,7 +146,7 @@ int Defensa_Maquina (char Tablero[]){
 for(int x=0;x<9;x++){
         if(Ganar_Maquina(Tablero, 'X', Hileras[X][0], Hileras[X][1], Hileras[X][2])==1){
             printf("Turno Maquina");
-            return Espacio_vacio(tab, Hileras[X][0], Hileras[X][1], Hileras[X][1]);
+            return Espacio_vacio(tab, Hileras[X][0], Hileras[X][1], Hileras[X][2]);
         }
     }
 
