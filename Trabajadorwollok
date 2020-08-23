@@ -1,0 +1,39 @@
+object persona {
+
+	var hora=9
+	var banco=0 
+	
+	method Horario() {
+		return hora
+	}
+	method Dinero(){
+		return banco
+	}
+	method saltotemporal(tiemposaltado){
+		hora=hora+tiemposaltado
+	}
+	method trabaja(){
+		if (hora=>17) {
+			return "Ya terminó mi jornada laboral"
+	            	 }
+	    if (hora=13)
+	    {
+	    	return "estoy en mi horario de almuerzo"
+	    }        	 
+		else {
+			hora=hora+1
+			banco=banco+1000
+		      }
+		             }
+	method divertite(tiempodiversion){
+		if (hora+tiempodiversion=>23){
+			return "no puedo,estoy cansado"
+		}
+		else {
+			hora=hora+tiempodiversion 
+             }
+                                      }
+     method dormir(){
+     	hora=9
+     }                                 
+}
