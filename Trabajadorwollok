@@ -9,9 +9,7 @@ object persona {
 	method Dinero(){
 		return banco
 	}
-	method saltotemporal(tiemposaltado){
-		hora=hora+tiemposaltado
-	}
+	
 	method trabaja(){
 		if (hora=>17) {
 			return "Ya terminó mi jornada laboral"
